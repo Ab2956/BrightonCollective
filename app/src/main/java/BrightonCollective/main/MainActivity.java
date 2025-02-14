@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentSplash);
                 finish();
             }
-        },1000);
-        Log.d(TAG, "onCreate: ");
+        },1000);        // 1s delay
+        Log.d(TAG, "onCreate: ");      // Log when created
     }
     @Override
-    protected void onStart(){
+    protected void onStart(){       // onStart method
         super.onStart();
 
-        Log.d(TAG, "onStart: ");
+        Log.d(TAG, "onStart: ");    // Log when started
     }
 
         //TODO splash screen for the app when first loading in
