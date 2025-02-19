@@ -4,15 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+import java.security.Key;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         Button button1 = findViewById(R.id.LoginButton);
         EditText editTextName1 = findViewById(R.id.UserInputEmail);
         EditText editTextName2 = findViewById(R.id.UserInputPassword);
-        final String key = "28747215";
+        final String encryptKey = "28747215";
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,18 +32,33 @@ public class LoginActivity extends AppCompatActivity {
                 String emailInput = editTextName1.getText().toString();
                 String passwordInput = editTextName2.getText().toString();
 
-                if(!emailInput.isEmpty()) {
-                    try {
-                        String encryptedEmail = encrypt(emailInput, key);
 
-                    }
+                if(!emailInput.isEmpty() && !passwordInput.isEmpty()) {
+                    String encryptedEmail = encrypt(emailInput, encryptKey);
+                    String encryptedPass = encrypt(passwordInput, encryptKey);
+                    Toast.makeText(LoginActivity.this, "Email: "+ encryptedEmail + "\nPassword: " + encryptedPass, Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(LoginActivity.this, "Incorrect Email or Password!\nTry Again!", Toast.LENGTH_SHORT).show();
                 }
+
+                public static String encrypt(String data, String secretKey) {
+                    Key key = new SecretKeySpec(secretKey.getBytes(), "Blowfish");
+                    Cipher cipher = Cipher.getInstance("Blowfish");
+                    cipher.init(Cipher.ENCRYPT_MODE, key);
+                    byte[] encrypted = cipher.doFinal(data.getBytes());
+                    return Base64.getEncoder().encodeToString(encrypted);
+                }
+
+                //loop through database code
+
             }
+
 
         });
 
 
         }
 
-        //TODO - Jaydan code login page encrypt password and email for the user to the database
+    //TODO - Jaydan code login page encrypt password and email for the user to the database
     }
