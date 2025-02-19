@@ -19,12 +19,12 @@ public class HomePage extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
 
-        Button settingsBtn = findViewById(R.id.settingsBtn);
+        Button settingsBtn = findViewById(R.id.settingsBtn);        // Buttons
         Button homeBtn = findViewById(R.id.homeBtn);
         Button sellBtn = findViewById(R.id.sellBtn);
         Button searchBtn = findViewById(R.id.searchBtn);
         Button myAccountBtn = findViewById(R.id.myAccountBtn);
-        settingsBtn.setOnClickListener(new View.OnClickListener() {
+        settingsBtn.setOnClickListener(new View.OnClickListener() {     // Intent for the changing of the page when clicked
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
