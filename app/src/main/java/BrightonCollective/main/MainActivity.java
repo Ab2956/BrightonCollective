@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentSplash);
                 finish();
             }
-        },1000);        // 1s delay
+        },2000);        // 2s delay
         Log.d(TAG, "onCreate: ");      // Log when created
     }
     @Override
