@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <TextView
         android:id="@+id/AppName"
         android:layout_width="128dp"
@@ -41,24 +44,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UserInputEmail" />
 
-    <Button
-        android:id="@+id/LoginButton"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="44dp"
-        android:text="Login"
-        app:layout_constraintStart_toEndOf="@+id/SignUpButton"
-        app:layout_constraintTop_toBottomOf="@+id/UserInputPassword" />
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
-    <Button
-        android:id="@+id/SignUpButton"
-        android:layout_width="172dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="44dp"
-        android:text="New? - Sign Up"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserInputPassword" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/LoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            style="@style/myButton"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/SignUpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/create_account"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/ForgottenPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/forgotten_password"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+</LinearLayout>
