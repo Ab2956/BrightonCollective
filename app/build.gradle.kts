@@ -1,13 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
+
 
 android {
     namespace = "BrightonCollective.main"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "BrightonCollective.main"
+        applicationId = "com.BrightonCollective"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -32,7 +34,7 @@ android {
 }
 
 dependencies {
-
+    implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -40,4 +42,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.google.firebase:firebase-analytics")
+    implementation ("com.google.firebase:firebase-auth:21.0.0")
+    implementation ("com.google.firebase:firebase-core:21.1.0")
+    implementation ("com.google.firebase:firebase-firestore:24.3.0")
 }

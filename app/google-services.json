@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "721178972135",
+    "project_id": "brightoncollective",
+    "storage_bucket": "brightoncollective.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721178972135:android:bb4a4b5a77e61b066bf742",
+        "android_client_info": {
+          "package_name": "com.BrightonCollective"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721178972135-pdt0hmoqerv22s506ok4eqdaffshqspk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQxnWPwhgCY6KPzJ9vx10zqblqagH5d08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721178972135-pdt0hmoqerv22s506ok4eqdaffshqspk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
