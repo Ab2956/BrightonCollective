@@ -1,2 +1,2 @@
-GitHub repo for the group proeject
+GitHub repo for the group project
 Android Studio folder
