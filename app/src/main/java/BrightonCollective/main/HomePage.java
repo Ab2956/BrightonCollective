@@ -24,6 +24,7 @@ public class HomePage extends AppCompatActivity {
         Button sellBtn = findViewById(R.id.sellBtn);
         Button searchBtn = findViewById(R.id.searchBtn);
         Button myAccountBtn = findViewById(R.id.myAccountBtn);
+
         settingsBtn.setOnClickListener(new View.OnClickListener() {     // Intent for the changing of the page when clicked
             @Override
             public void onClick(View view) {

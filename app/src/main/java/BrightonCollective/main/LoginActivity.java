@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,14 +45,10 @@ public class LoginActivity extends AppCompatActivity {
                 String emailInput = editTextName1.getText().toString();
                 String passwordInput = editTextName2.getText().toString();
 
-
-
                 if(!emailInput.isEmpty() && !passwordInput.isEmpty()) {
 
                     String encryptedEmail = encrypt(emailInput, encryptKey);
                     String encryptedPass = encrypt(passwordInput, encryptKey);
-
-
 
                     if (accountIsValid(encryptedEmail, encryptedPass)) {
                         Intent intent = new Intent(LoginActivity.this, HomePage.class);
@@ -64,13 +59,10 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Incorrect Email or Password!\nTry Again!", Toast.LENGTH_SHORT).show();
                     }
 
-
                 } else {
                     Toast.makeText(LoginActivity.this, "Enter password and email!\nTry Again!", Toast.LENGTH_SHORT).show();
                 }
-
                 //loop through database code
-
             }
 
         });
@@ -104,10 +96,6 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("Encrypted", "Encrypted Email: " + encryptedEmail);
             Log.d("Encrypted", "Encrypted Password: " + encryptedPass);
 
-
             return encryptedEmail.equals(validEmail) && encryptedPass.equals(validPass);
         }
-
-
-
     }
