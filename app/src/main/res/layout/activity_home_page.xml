@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Home"
+            android:text="@string/home"
             android:textColor="@color/white"
             android:textSize="34sp"
             android:textAlignment="center"
@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_weight="33"
             android:background="?attr/selectableItemBackground"
-            android:text="Settings"
+            android:text="@string/settings"
             android:textAlignment="center"
             android:layout_gravity="center"
             android:textColor="#646464"
@@ -133,7 +133,7 @@
             android:layout_weight="20"
             android:background="?attr/selectableItemBackground"
             android:src="@drawable/home_icon"
-            android:text="Home"
+            android:text="@string/homeicon"
             android:textColor="#fff"
             android:textSize="12sp" />
 
@@ -145,7 +145,7 @@
             android:layout_weight="20"
             android:background="?attr/selectableItemBackground"
             android:src="@drawable/search_icon"
-            android:text="Search"
+            android:text="@string/search"
             android:textColor="#fff"
             android:textSize="12sp" />
 
@@ -156,7 +156,7 @@
             android:layout_gravity="center"
             android:layout_weight="20"
             android:background="?attr/selectableItemBackground"
-            android:text="Sell"
+            android:text="@string/sell"
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="26sp" />
@@ -169,7 +169,7 @@
             android:layout_weight="20"
             android:background="?attr/selectableItemBackground"
             android:src="@drawable/message_icon"
-            android:text="Messages"
+            android:text="@string/messages"
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="12sp" />
@@ -182,7 +182,7 @@
             android:layout_weight="20"
             android:background="?attr/selectableItemBackground"
             android:src="@drawable/profile_icon"
-            android:text="My Profile"
+            android:text="@string/my_profile"
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="12sp" />
