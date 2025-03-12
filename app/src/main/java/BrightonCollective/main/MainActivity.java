@@ -37,5 +37,4 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onStart: ");    // Log when started
     }
 
-        //TODO splash screen for the app when first loading in
     }
