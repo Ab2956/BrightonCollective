@@ -2,20 +2,19 @@ package BrightonCollective.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.security.Key;
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
-import android.util.Base64;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class LoginActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,79 +22,50 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
-        Button button1 = findViewById(R.id.LoginButton);
-        Button createABtn = findViewById(R.id.SignUpButton);
-        EditText editTextName1 = findViewById(R.id.UserInputEmail);
-        EditText editTextName2 = findViewById(R.id.UserInputPassword);
-        final String encryptKey = "28747215";
+        mAuth = FirebaseAuth.getInstance();
 
-        createABtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        Button loginButton = findViewById(R.id.LoginButton);
+        Button signUpButton = findViewById(R.id.SignUpButton);
+        EditText emailInput = findViewById(R.id.UserInputEmail);
+        EditText passwordInput = findViewById(R.id.UserInputPassword);
+
+        // Sign Up Button - Redirects to Account Creation
+        signUpButton.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, MyAccountActivity.class);
+            startActivity(intent);
+            finish();
         });
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // Login Button - Authenticates User
+        loginButton.setOnClickListener(v -> {
+            String email = emailInput.getText().toString().trim();
+            String password = passwordInput.getText().toString().trim();
 
-                String emailInput = editTextName1.getText().toString();
-                String passwordInput = editTextName2.getText().toString();
-
-                if(!emailInput.isEmpty() && !passwordInput.isEmpty()) {
-
-                    String encryptedEmail = encrypt(emailInput, encryptKey);
-                    String encryptedPass = encrypt(passwordInput, encryptKey);
-
-                    if (accountIsValid(encryptedEmail, encryptedPass)) {
-                        Intent intent = new Intent(LoginActivity.this, HomePage.class);
-                        startActivity(intent);
-                        finish();
-
-                    }else {
-                        Toast.makeText(LoginActivity.this, "Incorrect Email or Password!\nTry Again!", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-                    Toast.makeText(LoginActivity.this, "Enter password and email!\nTry Again!", Toast.LENGTH_SHORT).show();
-                }
-                //loop through database code
+            if (!email.isEmpty() && !password.isEmpty()) {
+                signInWithEmailPassword(email, password);
+            } else {
+                Toast.makeText(LoginActivity.this, "Enter Email and Password!", Toast.LENGTH_SHORT).show();
             }
-
         });
-
-        }
-        // The encryption method for the email and password
-        public String encrypt(String data, String secretKey) {
-            try {
-                Key key = new SecretKeySpec(secretKey.getBytes(), "Blowfish");
-
-                Cipher cipher = Cipher.getInstance("Blowfish");
-
-                cipher.init(Cipher.ENCRYPT_MODE, key);
-
-                byte[] encrypted = cipher.doFinal(data.getBytes());
-
-                return Base64.encodeToString(encrypted, Base64.DEFAULT);
-
-            }catch (Exception e){
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        private boolean accountIsValid(String encryptedEmail, String encryptedPass){
-
-        //TODO needs to be changed to go through database and check if the email and password match
-
-            String validEmail = encrypt("user@gmail.com", "28747215");
-            String validPass = encrypt("password", "28747215");
-            Log.d("Encrypted", "Encrypted Email: " + encryptedEmail);
-            Log.d("Encrypted", "Encrypted Password: " + encryptedPass);
-
-            return encryptedEmail.equals(validEmail) && encryptedPass.equals(validPass);
-        }
     }
+
+    // Firebase Authentication - Sign In Method
+    private void signInWithEmailPassword(String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Successful login
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, HomePage.class));
+                            finish();
+                        }
+                    } else {
+                        // Failed login
+                        Toast.makeText(LoginActivity.this, "Authentication Failed: " +
+                                task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+}

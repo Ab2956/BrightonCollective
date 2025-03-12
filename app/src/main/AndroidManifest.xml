@@ -17,28 +17,33 @@
             android:exported="false" />
         <activity
             android:name=".SearchActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SellActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".BasketActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MyAccountActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ProductPageActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SettingsActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".HomePage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
