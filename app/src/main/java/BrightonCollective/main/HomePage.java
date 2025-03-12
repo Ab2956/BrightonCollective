@@ -1,9 +1,11 @@
 package BrightonCollective.main;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,10 +22,10 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         Button settingsBtn = findViewById(R.id.settingsBtn);        // Buttons
-        Button homeBtn = findViewById(R.id.homeBtn);
+        ImageButton homeBtn = findViewById(R.id.homeBtn);
         Button sellBtn = findViewById(R.id.sellBtn);
-        Button searchBtn = findViewById(R.id.searchBtn);
-        Button myAccountBtn = findViewById(R.id.myAccountBtn);
+        ImageButton searchBtn = findViewById(R.id.searchBtn);
+        ImageButton myAccountBtn = findViewById(R.id.myAccountBtn);
 
         settingsBtn.setOnClickListener(new View.OnClickListener() {     // Intent for the changing of the page when clicked
             @Override
