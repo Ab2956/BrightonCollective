@@ -1,7 +1,6 @@
 package BrightonCollective.main;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,12 +24,21 @@ public class HomePage extends AppCompatActivity {
         ImageButton homeBtn = findViewById(R.id.homeBtn);
         Button sellBtn = findViewById(R.id.sellBtn);
         ImageButton searchBtn = findViewById(R.id.searchBtn);
+        ImageButton messageBtn = findViewById(R.id.messagesBtn);
         ImageButton myAccountBtn = findViewById(R.id.myAccountBtn);
 
         settingsBtn.setOnClickListener(new View.OnClickListener() {     // Intent for the changing of the page when clicked
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        messageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
                 startActivity(intent);
                 finish();
             }
