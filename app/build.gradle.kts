@@ -40,10 +40,12 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     testImplementation(libs.junit)
+    testImplementation(libs.ext.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-auth:21.0.0")
     implementation ("com.google.firebase:firebase-core:21.1.0")
     implementation ("com.google.firebase:firebase-firestore:24.3.0")
+
 }
