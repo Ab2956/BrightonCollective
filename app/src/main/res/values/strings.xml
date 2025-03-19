@@ -10,4 +10,9 @@
     <string name="sell">Sell</string>
     <string name="messages">Messages</string>
     <string name="my_profile">My Profile</string>
+    <string name="enter_name_of_item">Enter name of item:</string>
+    <string name="enter_description">Enter description:</string>
+    <string name="upload_photo">Upload Photo +</string>
+    <string name="_0_00">£0.00</string>
+    <string name="submit">Submit</string>
 </resources>

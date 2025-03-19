@@ -1,18 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".SellActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_marginTop="50dp">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/uploadPhoto"
+            android:text="@string/upload_photo"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="10dp"
+            style="@style/myButton">
+
+        </Button>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/titleOfProduct"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/enter_name_of_item"
+                >
+
+            </EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/descriptionOfProduct"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/enter_description"
+                >
+            </EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/priceOfProduct"
+                android:inputType="number"
+                android:hint="@string/_0_00"
+                >
+            </EditText>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"
+                android:shadowRadius="150"
+                android:layout_gravity="center"
+                android:id="@+id/submitButton"
+                style="@style/myButton">
+
+            </Button>
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
