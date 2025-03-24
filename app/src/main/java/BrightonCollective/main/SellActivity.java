@@ -10,10 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -67,6 +71,7 @@ public class SellActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadProductDetails();
+
             }
         });
 
@@ -99,7 +104,41 @@ public class SellActivity extends AppCompatActivity {
         }
     }
     private void uploadProductDetails(){
-        progressDialog.show();
 
+        String productTitle = title.getText().toString().trim();
+        String productDesc = desc.getText().toString().trim();
+        String productPrice = price.getText().toString().trim();
+
+        if (filePath != null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading Product...");
+            progressDialog.show();
+
+            StorageReference reference = storageReference.child("product_images/"
+                        + System.currentTimeMillis());
+
+            reference.putFile(filePath).addOnSuccessListener(taskSnapshot ->
+                    reference.getDownloadUrl().addOnSuccessListener(uri -> {
+                String imageUrl = uri.toString();
+                saveProductToDatabase(productTitle, productDesc, productPrice, imageUrl);
+                progressDialog.dismiss();
+            }));
+        }
+
+
+    }
+
+    // method to save the product to the database
+    private void saveProductToDatabase(String title, String desc, String price, String imageUrl){
+        FirebaseDatabase fireBaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference productReference = fireBaseDatabase.getReference("products");
+
+        String productId = productReference.push().getKey();
+
+        Product product = new Product(title, desc, imageUrl, Double.parseDouble(price));
+
+        productReference.child(productId).setValue(product).addOnSuccessListener(aVoid -> {
+            Toast.makeText(SellActivity.this, "Uploaded Product!", Toast.LENGTH_SHORT).show();
+        });
     }
 }

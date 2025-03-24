@@ -63,8 +63,8 @@ class Product{
 
         public Product() {} //Empty constructor for Firebase later on
 
-        public Product(String name, String description,String imageUrl,double price) {
-            this.name = name;
+        public Product(String title, String description,String imageUrl,double price) {
+            this.name = title;
             this.description = description;
             this.imageUrl = imageUrl;
             this.price = price;
