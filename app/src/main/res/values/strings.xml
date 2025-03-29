@@ -15,4 +15,6 @@
     <string name="upload_photo">Upload Photo +</string>
     <string name="_0_00">£0.00</string>
     <string name="submit">Submit</string>
+    <string name="sellTitle">Sell</string>
+    <string name="image_of_item">Image of Item</string>
 </resources>

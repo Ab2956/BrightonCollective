@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ public class SellActivity extends AppCompatActivity {
     private EditText price;
     private Button uploadBtn, submitBtn;
     private ImageView imageView;
-
+    private ImageButton backBtn;
     // pick image for the selectPhoto method
     private final int pickImageRequest = 22;
     private Uri filePath;
@@ -56,6 +57,7 @@ public class SellActivity extends AppCompatActivity {
         uploadBtn = findViewById(R.id.uploadPhoto);
         submitBtn = findViewById(R.id.submitButton);
         imageView = findViewById(R.id.imgView);
+        backBtn = findViewById(R.id.backButton);
 
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
@@ -72,6 +74,15 @@ public class SellActivity extends AppCompatActivity {
             public void onClick(View v) {
                 uploadProductDetails();
 
+            }
+        });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SellActivity.this, HomePage.class);
+                startActivity(intent);
+                finish();
             }
         });
 
