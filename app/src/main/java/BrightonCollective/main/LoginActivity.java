@@ -31,10 +31,12 @@ public class LoginActivity extends AppCompatActivity {
 
         // Sign Up Button - Redirects to Account Creation
         signUpButton.setOnClickListener(view -> {
-            Intent intent = new Intent(LoginActivity.this, MyAccountActivity.class);
+            Intent intent = new Intent(LoginActivity.this, SignUpVerification.class);
             startActivity(intent);
             finish();
         });
+
+
 
         // Login Button - Authenticates User
         loginButton.setOnClickListener(v -> {
