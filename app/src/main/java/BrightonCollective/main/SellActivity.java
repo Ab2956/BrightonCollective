@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class SellActivity extends AppCompatActivity {
@@ -115,20 +117,38 @@ public class SellActivity extends AppCompatActivity {
         String productDesc = desc.getText().toString().trim();
         String productPrice = price.getText().toString().trim();
 
-        if (filePath != null) {
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading Product...");
-            progressDialog.show();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Uploading Product...");
+        progressDialog.show();
 
-            StorageReference reference = storageReference.child("product_images/"
-                        + System.currentTimeMillis());
+        try {
+            // Convert image to Base64
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+            byte[] imageBytes = baos.toByteArray();
+            String imageBase64 = android.util.Base64.encodeToString(imageBytes, android.util.Base64.DEFAULT);
 
-            reference.putFile(filePath).addOnSuccessListener(taskSnapshot ->
-                    reference.getDownloadUrl().addOnSuccessListener(uri -> {
-                String imageUrl = uri.toString();
-                saveProductToDatabase(productTitle, productDesc, productPrice, imageUrl);
-                progressDialog.dismiss();
-            }));
+            // Create product object with Base64 string
+            Product product = new Product(productTitle, productDesc, imageBase64, Double.parseDouble(productPrice));
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference productRef = database.getReference("products");
+            String productId = productRef.push().getKey();
+
+            productRef.child(productId).setValue(product)
+                    .addOnSuccessListener(unused -> {
+                        progressDialog.dismiss();
+                        Toast.makeText(this, "Uploaded!", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        progressDialog.dismiss();
+                        Toast.makeText(this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+
+        } catch (IOException e) {
+            progressDialog.dismiss();
+            Toast.makeText(this, "Image processing failed", Toast.LENGTH_SHORT).show();
         }
 
 

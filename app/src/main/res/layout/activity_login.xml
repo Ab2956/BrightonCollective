@@ -18,8 +18,8 @@
         android:textSize="32sp"
         android:layout_gravity="center"
         android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        android:text="Brighton Collective"
+        android:layout_marginTop="60dp"
+        android:text="@string/brighton_collectivetitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/white"/>
