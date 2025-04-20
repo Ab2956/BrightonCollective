@@ -31,6 +31,7 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="Email"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AppName"
         android:textColorHint="@color/cardview_dark_background"/>
@@ -42,6 +43,7 @@
         android:layout_marginStart="66dp"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:textColor="@color/white"
         android:inputType="textPassword"
         android:hint="Password"
         app:layout_constraintStart_toStartOf="parent"
