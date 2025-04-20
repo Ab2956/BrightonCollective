@@ -122,20 +122,21 @@ public class SellActivity extends AppCompatActivity {
         progressDialog.show();
 
         try {
-            // Convert image to Base64
+            // Convert image to be able to go int db
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
-            byte[] imageBytes = baos.toByteArray();
+            ByteArrayOutputStream byteoutput = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteoutput);
+            byte[] imageBytes = byteoutput.toByteArray();
             String imageBase64 = android.util.Base64.encodeToString(imageBytes, android.util.Base64.DEFAULT);
 
-            // Create product object with Base64 string
+            // create the product
             Product product = new Product(productTitle, productDesc, imageBase64, Double.parseDouble(productPrice));
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference productRef = database.getReference("products");
             String productId = productRef.push().getKey();
 
+            // add product
             productRef.child(productId).setValue(product)
                     .addOnSuccessListener(unused -> {
                         progressDialog.dismiss();
