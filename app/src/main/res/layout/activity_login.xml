@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/backgroundColor">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -18,7 +19,8 @@
         android:layout_marginTop="40dp"
         android:text="Brighton Collective"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/UserInputEmail"
@@ -30,7 +32,8 @@
         android:inputType="textEmailAddress"
         android:hint="Email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AppName" />
+        app:layout_constraintTop_toBottomOf="@+id/AppName"
+        android:textColorHint="@color/cardview_dark_background"/>
 
     <EditText
         android:id="@+id/UserInputPassword"
@@ -42,7 +45,8 @@
         android:inputType="textPassword"
         android:hint="Password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserInputEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/UserInputEmail"
+        android:textColorHint="@color/cardview_dark_background"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -74,7 +78,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:text="@string/create_account"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/ForgottenPassword"
@@ -82,7 +86,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:text="@string/forgotten_password"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </LinearLayout>
