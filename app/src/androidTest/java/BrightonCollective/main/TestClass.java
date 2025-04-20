@@ -36,7 +36,7 @@ public class TestClass {
 
         final boolean[] loginFailed = {false};
 
-        auth.signInWithEmailAndPassword("fakeuser@test.com", "fakepassword")
+        auth.signInWithEmailAndPassword("invaliduser@invalid.com", "invalidpass")
                 .addOnCompleteListener(task -> {
                     loginFailed[0] = !task.isSuccessful();
                     latch.countDown();
