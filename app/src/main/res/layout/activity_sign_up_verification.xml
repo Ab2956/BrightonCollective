@@ -48,8 +48,8 @@
             style="@style/myButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:text="Verify" />
+            android:layout_marginStart="90dp"
+            android:text="Email Verified" />
     </LinearLayout>
 
 
