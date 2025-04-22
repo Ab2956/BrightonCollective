@@ -16,8 +16,11 @@
             android:name=".MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateAccountActivity"
-            android:exported="false" />
+            android:name=".SignUp"
+            android:exported="true" />
+        <activity
+            android:name=".SignUpVerification"
+            android:exported="true" />
         <activity
             android:name=".SearchActivity"
             android:exported="true" />
