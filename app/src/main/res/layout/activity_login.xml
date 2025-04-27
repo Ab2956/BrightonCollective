@@ -5,20 +5,24 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/backgroundColor">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <TextView
         android:id="@+id/AppName"
-        android:layout_width="128dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="40dp"
-        android:text="Brighton Collective"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="60dp"
+        android:text="@string/brighton_collectivetitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/UserInputEmail"
@@ -29,8 +33,10 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="Email"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AppName" />
+        app:layout_constraintTop_toBottomOf="@+id/AppName"
+        android:textColorHint="@color/cardview_dark_background"/>
 
     <EditText
         android:id="@+id/UserInputPassword"
@@ -39,10 +45,12 @@
         android:layout_marginStart="66dp"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:textColor="@color/white"
         android:inputType="textPassword"
         android:hint="Password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserInputEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/UserInputEmail"
+        android:textColorHint="@color/cardview_dark_background"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -55,6 +63,8 @@
             android:id="@+id/LoginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50px"
+            android:layout_marginBottom="50px"
             android:text="Login"
             style="@style/myButton"
             />
@@ -74,7 +84,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:text="@string/create_account"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/ForgottenPassword"
@@ -82,7 +92,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:text="@string/forgotten_password"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </LinearLayout>
