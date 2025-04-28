@@ -28,9 +28,6 @@
             android:name=".SignUpVerification"
             android:exported="true" />
         <activity
-            android:name=".ForgottenPasswordActivity"
-            android:exported="true" />
-        <activity
             android:name=".SearchActivity"
             android:exported="true" />
         <activity
