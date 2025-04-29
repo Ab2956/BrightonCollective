@@ -2,6 +2,7 @@ package BrightonCollective.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ public class SignUp extends AppCompatActivity {
     private Button signUpButton;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+    private ImageButton backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +33,19 @@ public class SignUp extends AppCompatActivity {
         confirmPasswordInput = findViewById(R.id.UserConfirmPassword);
         universityGroup = findViewById(R.id.universityRadioGroup);
         signUpButton = findViewById(R.id.SignUpButton);
+        backBtn = findViewById(R.id.backButton);
+
 
         signUpButton.setOnClickListener(v -> createAccount());
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUp.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void createAccount() {
