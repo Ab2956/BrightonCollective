@@ -18,6 +18,15 @@
     <string name="sellTitle">Sell</string>
     <string name="image_of_item">Image of Item</string>
     <string name="brighton_collectivetitle">Brighton Collective</string>
+    <string name="brighton">Brighton</string>
+    <string name="sussex">Sussex</string>
+    <string name="brighton_and_sussex_medical_school">Brighton and Sussex Medical School</string>
+    <string name="create_accounttext">Create Account</string>
+    <string name="university">University:</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email Address</string>
+    <string name="full_name">Full Name</string>
 
 
 </resources>
