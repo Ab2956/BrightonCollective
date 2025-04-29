@@ -30,6 +30,8 @@
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="passwordlogin">Password</string>
+    <string name="if_you_did_not_receive_this_email_please_check_your_spam_or_junk_e_mail_folder">If you did not receive this email, please check your Spam or Junk E-mail folder.</string>
+    <string name="send_password_reset_email">Send Password Reset Email</string>
 
 
 </resources>
