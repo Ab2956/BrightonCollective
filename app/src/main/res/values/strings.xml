@@ -28,6 +28,8 @@
     <string name="email_address">Email Address</string>
     <string name="full_name">Full Name</string>
     <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="passwordlogin">Password</string>
 
 
 </resources>
