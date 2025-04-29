@@ -13,10 +13,10 @@
         android:theme="@style/Theme.BrightonCollective"
         tools:targetApi="31">
         <activity
-            android:name=".ForgottenPasswordActivity"
+            android:name=".MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".MessageActivity"
+            android:name=".ForgottenPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".CreateAccountActivity"
