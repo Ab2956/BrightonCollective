@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -19,6 +21,7 @@ public class ForgottenPasswordActivity extends AppCompatActivity {
     private EditText resetEmailInput;
     private Button sendResetButton;
     private FirebaseAuth mAuth;
+    private ImageButton backBtn;
 
 
     @Override
@@ -32,6 +35,16 @@ public class ForgottenPasswordActivity extends AppCompatActivity {
         resetEmailInput = findViewById(R.id.UserInputResetEmail);
         sendResetButton = findViewById(R.id.sendPasswordResetEmail);
         mAuth = FirebaseAuth.getInstance();
+        backBtn = findViewById(R.id.backButton);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ForgottenPasswordActivity.this, HomePage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         sendResetButton.setOnClickListener(new View.OnClickListener() {
             @Override
