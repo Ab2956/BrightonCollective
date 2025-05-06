@@ -12,14 +12,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.ByteArrayOutputStream;
+import java.io.IOError;
 import java.io.IOException;
 
 public class SellActivity extends AppCompatActivity {
@@ -30,6 +33,7 @@ public class SellActivity extends AppCompatActivity {
     private EditText price;
     private Button uploadBtn, submitBtn;
     private ImageView imageView;
+
     private ImageButton backBtn;
     // pick image for the selectPhoto method
     private final int pickImageRequest = 22;
@@ -117,46 +121,27 @@ public class SellActivity extends AppCompatActivity {
         String productDesc = desc.getText().toString().trim();
         String productPrice = price.getText().toString().trim();
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Uploading Product...");
-        progressDialog.show();
+        if (filePath != null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading Product...");
+            progressDialog.show();
 
-        try {
-            // Convert image to be able to go int db
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-            ByteArrayOutputStream byteoutput = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteoutput);
-            byte[] imageBytes = byteoutput.toByteArray();
-            String imageBase64 = android.util.Base64.encodeToString(imageBytes, android.util.Base64.DEFAULT);
+            StorageReference reference = storageReference.child("product_images/"
+                    + System.currentTimeMillis());
 
-            // create the product
-            Product product = new Product(productTitle, productDesc, imageBase64, Double.parseDouble(productPrice));
-
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference productRef = database.getReference("products");
-            String productId = productRef.push().getKey();
-
-            // add product
-            productRef.child(productId).setValue(product)
-                    .addOnSuccessListener(unused -> {
+            reference.putFile(filePath).addOnSuccessListener(taskSnapshot ->
+                    reference.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String imageUrl = uri.toString();
+                        saveProductToDatabase(productTitle, productDesc, productPrice, imageUrl);
                         progressDialog.dismiss();
-                        Toast.makeText(this, "Uploaded!", Toast.LENGTH_SHORT).show();
-                    })
-                    .addOnFailureListener(e -> {
-                        progressDialog.dismiss();
-                        Toast.makeText(this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
-
-        } catch (IOException e) {
-            progressDialog.dismiss();
-            Toast.makeText(this, "Image processing failed", Toast.LENGTH_SHORT).show();
+                    }));
         }
 
 
     }
 
     // method to save the product to the database
-    private void saveProductToDatabase(String title, String desc, String price, String imageUrl){
+    private void saveProductToDatabase(String title, String desc, String price, String imageUrl) {
         FirebaseDatabase fireBaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference productReference = fireBaseDatabase.getReference("products");
 

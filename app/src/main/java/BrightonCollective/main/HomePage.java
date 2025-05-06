@@ -1,3 +1,4 @@
+
 package BrightonCollective.main;
 
 import android.content.Intent;
@@ -26,6 +27,16 @@ public class HomePage extends AppCompatActivity {
         ImageButton searchBtn = findViewById(R.id.searchBtn);
         ImageButton messageBtn = findViewById(R.id.messagesBtn);
         ImageButton myAccountBtn = findViewById(R.id.myAccountBtn);
+        ImageButton basketBtn = findViewById(R.id.basketBtn);
+
+        basketBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BasketActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         settingsBtn.setOnClickListener(new View.OnClickListener() {     // Intent for the changing of the page when clicked
             @Override

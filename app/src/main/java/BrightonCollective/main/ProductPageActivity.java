@@ -34,6 +34,13 @@ public class ProductPageActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_product_page);
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -63,8 +70,8 @@ class Product{
 
         public Product() {} //Empty constructor for Firebase later on
 
-        public Product(String title, String description,String imageUrl,double price) {
-            this.name = title;
+        public Product(String name, String description,String imageUrl,double price) {
+            this.name = name;
             this.description = description;
             this.imageUrl = imageUrl;
             this.price = price;
