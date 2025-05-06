@@ -1,29 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="24dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp">
 
-        <TextView
-            android:id="@+id/AppName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Brighton Collective"
-            android:textSize="24sp"
-            android:layout_marginBottom="24dp"/>
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="20"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@android:drawable/ic_menu_revert" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_account"
+                android:layout_weight="50"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="34sp"
+                android:textColor="#D1D1D1">
+            </TextView>
+
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/UserInputFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
+            android:hint="@string/full_name"
+            android:textColorHint="#A8A8A8"
             android:inputType="textPersonName"
             android:layout_marginBottom="12dp"/>
 
@@ -31,7 +59,8 @@
             android:id="@+id/UserInputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email Address"
+            android:hint="@string/email_address"
+            android:textColorHint="#A8A8A8"
             android:inputType="textEmailAddress"
             android:layout_marginBottom="12dp"/>
 
@@ -39,7 +68,8 @@
             android:id="@+id/UserInputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
+            android:textColorHint="#A8A8A8"
             android:inputType="textPassword"
             android:layout_marginBottom="12dp"/>
 
@@ -47,15 +77,17 @@
             android:id="@+id/UserConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
+            android:textColorHint="#A8A8A8"
             android:inputType="textPassword"
             android:layout_marginBottom="24dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="University:"
-            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="@string/university"
+            android:textSize="24sp"
             android:layout_marginBottom="8dp"/>
 
         <RadioGroup
@@ -69,19 +101,25 @@
                 android:id="@+id/brightonRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Brighton"/>
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="@string/brighton"/>
 
             <RadioButton
                 android:id="@+id/sussexRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sussex"/>
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="@string/sussex"/>
 
             <RadioButton
                 android:id="@+id/bsmsRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Brighton and Sussex Medical School"/>
+                android:text="@string/brighton_and_sussex_medical_school"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
         </RadioGroup>
 
         <Button
@@ -89,6 +127,6 @@
             style="@style/myButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Account" />
+            android:text="@string/create_accounttext" />
     </LinearLayout>
 </ScrollView>

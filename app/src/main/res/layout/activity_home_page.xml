@@ -8,80 +8,354 @@
     android:background="@color/backgroundColor"
     tools:context=".HomePage">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="100"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="5dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="5dp">
+
+            <ImageButton
+                android:id="@+id/basketBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/basket_icon"
+                android:background="?attr/selectableItemBackground"
+                android:layout_weight="40"
+                android:contentDescription="@string/basketdes"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home"
+                android:textColor="@color/white"
+                android:textSize="34sp"
+                android:textAlignment="center"
+                android:layout_weight="50"
+                android:layout_gravity="center"
+                >
+            </TextView>
+
+            <Button
+                android:id="@+id/settingsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/settings"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:textColor="#929292"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="33"
-            android:text="@string/brighton_collective"
-            android:textAlignment="center"
-            android:textColor="#646464"
-            android:textSize="14sp" />
+            android:columnCount="2"
+            android:rowCount="4"
+            android:id="@+id/grid_top_view"
+            android:layout_margin="20dp"
+            android:layout_gravity="center">
+            <!-- 0 col row 1-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:id="@+id/c1"
+                android:layout_height="150dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:textColor="@color/white"
-            android:textSize="34sp"
-            android:textAlignment="center"
-            android:layout_weight="33"
-            android:layout_gravity="center"
-            >
-        </TextView>
+                    <ImageView
+                        android:id="@+id/productImageView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center" />
 
-        <Button
-            android:id="@+id/settingsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="33"
-            android:background="?attr/selectableItemBackground"
-            android:text="Settings"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:textColor="#646464"
-            android:textSize="17sp" />
+                    <TextView
+                        android:id="@+id/productName1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Name"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/productPrice1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$0.00"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
 
 
+            </androidx.cardview.widget.CardView>
+            <!-- 1 col row 1-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:id="@+id/c2"
+                android:layout_height="150dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- ImageView for the product image -->
+                    <ImageView
+                        android:id="@+id/productImageView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center" />
+
+                    <!-- TextViews for product name and description -->
+                    <TextView
+                        android:id="@+id/productName2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Name"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/productPrice2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$0.00"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!-- 0 col row 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:id="@+id/c3"
+                android:layout_height="150dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- ImageView for the product image -->
+                    <ImageView
+                        android:id="@+id/productImageView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center" />
+
+                    <!-- TextViews for product name and description -->
+                    <TextView
+                        android:id="@+id/productName3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Name"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/productPrice3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$0.00"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!-- 1 col row 2-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/c4"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- ImageView for the product image -->
+                    <ImageView
+                        android:id="@+id/productImageView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:scaleType="centerCrop"
+
+                        android:layout_gravity="center" />
+
+                    <!-- TextViews for product name and description -->
+                    <TextView
+                        android:id="@+id/productName4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Name"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/productPrice4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$0.00"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!-- 1 col row 3-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/c6"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="3"
+                android:layout_column="1"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- ImageView for the product image -->
+                    <ImageView
+                        android:id="@+id/productImageView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center" />
+
+                    <!-- TextViews for product name and description -->
+                    <TextView
+                        android:id="@+id/productName6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Name"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/productPrice6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$0.00"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!-- 0 col row 3-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/c5"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="3"
+                android:layout_column="0"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- ImageView for the product image -->
+                    <ImageView
+                        android:id="@+id/productImageView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center" />
+
+                    <!-- TextViews for product name and description -->
+                    <TextView
+                        android:id="@+id/productName5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Name"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/productPrice5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$0.00"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-
+        android:layout_marginBottom="10dp"
+        android:weightSum="100"
+        android:background="@color/iconBackground"
         >
 
-        <Button
+        <ImageButton
             android:id="@+id/homeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
+            android:src="@drawable/home_icon"
             android:background="?attr/selectableItemBackground"
-
-            android:text="Home"
+            android:layout_weight="20"
+            android:text="@string/homeicon"
+            android:contentDescription="@string/homedes"
             android:textColor="#fff"
             android:textSize="12sp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/searchBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:src="@drawable/search_icon"
             android:layout_gravity="center"
             android:background="?attr/selectableItemBackground"
-            android:text="Search"
+            android:text="@string/search"
             android:textColor="#fff"
+            android:layout_weight="20"
+            android:contentDescription="@string/searchdes"
             android:textSize="12sp" />
 
         <Button
@@ -89,35 +363,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
             android:background="?attr/selectableItemBackground"
-            android:text="Sell"
+            android:text="@string/sell"
             android:textAlignment="center"
+            android:layout_weight="20"
             android:textColor="#fff"
-            android:textSize="14sp" />
+            android:textSize="24sp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/messagesBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:src="@drawable/message_icon"
             android:background="?attr/selectableItemBackground"
-            android:text="Messages"
+            android:text="@string/messages"
             android:textAlignment="center"
+            android:layout_weight="20"
             android:layout_gravity="center"
+            android:contentDescription="@string/messagesdes"
             android:textColor="#fff"
             android:textSize="12sp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/myAccountBtn"
             android:layout_width="58dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
+            android:src="@drawable/profile_icon"
             android:background="?attr/selectableItemBackground"
-            android:text="My Profile"
+            android:text="@string/my_profile"
+            android:layout_weight="20"
             android:textAlignment="center"
             android:textColor="#fff"
+            android:contentDescription="@string/my_accountdes"
             android:textSize="12sp" />
     </LinearLayout>
 </RelativeLayout>

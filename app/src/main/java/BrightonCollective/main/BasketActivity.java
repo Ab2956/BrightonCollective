@@ -1,8 +1,10 @@
 package BrightonCollective.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class BasketActivity extends AppCompatActivity {
+
+    private ImageButton backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +32,19 @@ public class BasketActivity extends AppCompatActivity {
         RecyclerView recyclerViewBasket = findViewById(R.id.recyclerViewBasket);
         TextView textViewTotalPrice = findViewById(R.id.textViewTotalPrice);
         Button buttonCheckout = findViewById(R.id.buttonCheckout);
+        backBtn = findViewById(R.id.backButton);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BasketActivity.this, HomePage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // Create a list of fake basket items
-        List<BasketItem> basketItems = new ArrayList<>();
-        basketItems.add(new BasketItem("Vintage Jacket", 1, 45.00));
-        basketItems.add(new BasketItem("Handmade Necklace", 2, 25.00));
-        basketItems.add(new BasketItem("Organic Soap", 3, 5.50));
+        List<BasketItem> basketItems = BasketManager.getInstance().getBasketItems();
 
         // Set up RecyclerView with BasketAdapter
         BasketAdapter adapter = new BasketAdapter(basketItems);
@@ -48,6 +61,7 @@ public class BasketActivity extends AppCompatActivity {
         // Set button action
         buttonCheckout.setOnClickListener(v -> {
             Toast.makeText(this, "Checkout clicked!", Toast.LENGTH_SHORT).show();
+            BasketManager.getInstance().clearBasket();
         });
     }
 }
