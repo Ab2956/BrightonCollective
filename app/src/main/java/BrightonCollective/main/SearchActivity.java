@@ -35,6 +35,7 @@ public class SearchActivity extends AppCompatActivity {
     private DatabaseReference databaseRef;
     private LinearLayout layout2;
     private ExecutorService executorService;
+    private ImageButton backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,16 @@ public class SearchActivity extends AppCompatActivity {
         layout2 = findViewById(R.id.layoutStructure);
         databaseRef = FirebaseDatabase.getInstance().getReference("products");
         executorService = Executors.newFixedThreadPool(4);
+        backBtn = findViewById(R.id.backButton);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SearchActivity.this, HomePage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         fetchProductsFromDatabase();
 

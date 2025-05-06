@@ -83,5 +83,9 @@ class Product{
         public String getImageUrl() { return imageUrl; }
         public double getPrice() { return price; }
 
+        public void setImageUrl(String imageUrl){
+        this.imageUrl = imageUrl;
+        }
+
     }
 

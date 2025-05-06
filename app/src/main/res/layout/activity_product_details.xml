@@ -1,0 +1,81 @@
+<!-- activity_product_detail.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@android:drawable/ic_menu_revert" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/productName"
+            android:layout_height="wrap_content"
+            android:text="@string/product_name"
+            android:layout_weight="50"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="34sp"
+            android:textColor="#D1D1D1">
+
+
+
+        </TextView>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/productDescription"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:text="@string/product_description"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/productPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_0_00buy"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buy"
+        android:shadowRadius="150"
+        android:textSize="28sp"
+        android:layout_gravity="center"
+        android:id="@+id/submitButton"
+        android:textColor="#D1D1D1"
+        style="@style/myButton">
+
+    </Button>
+</LinearLayout>
