@@ -22,5 +22,5 @@ firebase-storage = { group = "com.google.firebase", name = "firebase-storage", v
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
+android-application = { id = "com.android.application", version = "8.6.1" }
 

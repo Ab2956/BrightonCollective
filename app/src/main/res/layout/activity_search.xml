@@ -6,6 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
 
     <TextView
         android:id="@+id/AppName"
@@ -14,11 +19,14 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
         android:autoSizeTextType="uniform"
-        android:text="Brighton Collective"
+        android:text="Search"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
     <EditText
         android:id="@+id/SearchInput"
         android:layout_width="262dp"
@@ -27,7 +35,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Search"
+        android:hint="@string/searchbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AppName" />
 
@@ -40,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AppName"
         app:srcCompat="@drawable/search_icon" />
-
+</LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/layoutStructure"
         android:layout_width="match_parent"
@@ -49,5 +57,5 @@
         android:padding="16dp" >
 
     </LinearLayout>
-
+</LinearLayout>
 </RelativeLayout>

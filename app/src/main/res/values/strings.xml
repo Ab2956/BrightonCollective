@@ -37,6 +37,9 @@
     <string name="messagesdes">Messages</string>
     <string name="my_accountdes">My Account</string>
     <string name="searchdes">Search</string>
+    <string name="checkout">Checkout</string>
+    <string name="total_0_00">Total: £0.00</string>
+    <string name="searchbar">Search</string>
 
 
 </resources>

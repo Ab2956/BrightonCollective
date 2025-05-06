@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".BasketActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <!-- RecyclerView for Basket Items -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewBasket"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTotalPrice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /> <!-- Reduced margin to move it higher -->
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTotalPrice" /> <!-- Reduced margin to move it higher -->
 
     <!-- TextView for Total Price -->
     <TextView
         android:id="@+id/textViewTotalPrice"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:padding="16dp"
-        android:text="Total: £0.00"
+        android:textColor="@color/white"
+        android:text="@string/total_0_00"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,13 +40,15 @@
     <!-- Checkout Button (Made higher by reducing margin) -->
     <Button
         android:id="@+id/buttonCheckout"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
-        android:text="Checkout"
+        android:text="@string/checkout"
+        style="@style/myButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewTotalPrice"
         app:layout_constraintVertical_bias="0.8" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+</RelativeLayout>
