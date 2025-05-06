@@ -44,10 +44,7 @@ public class BasketActivity extends AppCompatActivity {
         });
 
         // Create a list of fake basket items
-        List<BasketItem> basketItems = new ArrayList<>();
-        basketItems.add(new BasketItem("Vintage Jacket", 1, 45.00));
-        basketItems.add(new BasketItem("Handmade Necklace", 2, 25.00));
-        basketItems.add(new BasketItem("Organic Soap", 3, 5.50));
+        List<BasketItem> basketItems = BasketManager.getInstance().getBasketItems();
 
         // Set up RecyclerView with BasketAdapter
         BasketAdapter adapter = new BasketAdapter(basketItems);
@@ -64,6 +61,7 @@ public class BasketActivity extends AppCompatActivity {
         // Set button action
         buttonCheckout.setOnClickListener(v -> {
             Toast.makeText(this, "Checkout clicked!", Toast.LENGTH_SHORT).show();
+            BasketManager.getInstance().clearBasket();
         });
     }
 }

@@ -73,7 +73,7 @@
         android:shadowRadius="150"
         android:textSize="28sp"
         android:layout_gravity="center"
-        android:id="@+id/submitButton"
+        android:id="@+id/buyBtn"
         android:textColor="#D1D1D1"
         style="@style/myButton">
 
