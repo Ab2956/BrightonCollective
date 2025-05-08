@@ -158,12 +158,12 @@ private void setCardViewClickListener(CardView cardView, int productIndex) {
 
     private void loadDummyProducts() {
         // products added to the list
-        productList.add(new Product("Vintage Shirt", "Classic old shirt", "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 19.99));
-        productList.add(new Product("Leather Jacket", "Stylish winter jacket", "https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 29.99));
+        productList.add(new Product("Vintage Shirt", "Classic old shirt", "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 25.00));
+        productList.add(new Product("Leather Jacket", "Stylish winter jacket", "https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 58.00));
         productList.add(new Product("Nike Shoes", "Yellow Nike Shoes", "https://images.unsplash.com/photo-1628253747716-0c4f5c90fdda?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fE5pa2UlMjBTaG9lc3xlbnwwfHwwfHx8Mg%3D%3D", 39.99));
-        productList.add(new Product("Black Socks", "Cool black Socks", "https://images.unsplash.com/photo-1640026199235-c24aa417b552?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fFNvY2tzJTIwZm9yJTIwc2FsZXxlbnwwfHwwfHx8Mg%3D%3D", 19.99));
-        productList.add(new Product("Omega Watch", "Lovely Omega watch", "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2F0Y2h8ZW58MHx8MHx8fDI%3D", 19.99));
-        productList.add(new Product("Fluffy Coat", "Blue Long Fluffy Coat", "https://images.unsplash.com/photo-1608236159447-2d27116777f3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q29hdCUyMGZvciUyMHNhbGV8ZW58MHx8MHx8fDI%3D", 19.99));
+        productList.add(new Product("Black Socks", "Cool black Socks", "https://images.unsplash.com/photo-1640026199235-c24aa417b552?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fFNvY2tzJTIwZm9yJTIwc2FsZXxlbnwwfHwwfHx8Mg%3D%3D", 10.50));
+        productList.add(new Product("Omega Watch", "Lovely Omega watch", "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2F0Y2h8ZW58MHx8MHx8fDI%3D", 20.00));
+        productList.add(new Product("Fluffy Coat", "Blue Long Fluffy Coat", "https://images.unsplash.com/photo-1608236159447-2d27116777f3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q29hdCUyMGZvciUyMHNhbGV8ZW58MHx8MHx8fDI%3D", 190.00));
 
 
 
