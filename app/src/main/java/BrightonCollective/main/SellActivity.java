@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOError;
 import java.io.IOException;
 
@@ -95,7 +98,7 @@ public class SellActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent,"Select Image"), pickImageRequest);
     }
 
-    // override to be able to get the result and show it on the screen/imageView
+    // override to be able to get the result
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
 
@@ -106,6 +109,7 @@ public class SellActivity extends AppCompatActivity {
                 && data.getData() != null){
 
             filePath = data.getData();
+            Log.d("File Path", "File Path: " + filePath);
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filePath);
                 imageView.setImageBitmap(bitmap);
@@ -121,23 +125,36 @@ public class SellActivity extends AppCompatActivity {
         String productDesc = desc.getText().toString().trim();
         String productPrice = price.getText().toString().trim();
 
-        if (filePath != null) {
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading Product...");
-            progressDialog.show();
-
-            StorageReference reference = storageReference.child("product_images/"
-                    + System.currentTimeMillis());
-
-            reference.putFile(filePath).addOnSuccessListener(taskSnapshot ->
-                    reference.getDownloadUrl().addOnSuccessListener(uri -> {
-                        String imageUrl = uri.toString();
-                        saveProductToDatabase(productTitle, productDesc, productPrice, imageUrl);
-                        progressDialog.dismiss();
-                    }));
+        if (productTitle.isEmpty() || productDesc.isEmpty() || productPrice.isEmpty()) {
+            Toast.makeText(SellActivity.this, "Please fill in all the fields", Toast.LENGTH_SHORT).show();
+            return;
         }
 
+        // Convert price to a double
+        double priceValue = 0.0;
+        try {
+            priceValue = Double.parseDouble(productPrice);
+        } catch (NumberFormatException e) {
+            Toast.makeText(SellActivity.this, "Invalid price format", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        if (filePath != null) {
+            // Convert image to Bitmap
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+
+
+                String imageBase64 = encodeImageToBase64(bitmap);
+
+                // Save the product to the database (with Base64 image)
+                saveProductToDatabase(productTitle, productDesc, String.valueOf(priceValue), imageBase64);
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(SellActivity.this, "Failed to convert image", Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 
     // method to save the product to the database
@@ -151,6 +168,22 @@ public class SellActivity extends AppCompatActivity {
 
         productReference.child(productId).setValue(product).addOnSuccessListener(aVoid -> {
             Toast.makeText(SellActivity.this, "Uploaded Product!", Toast.LENGTH_SHORT).show();
-        });
+
+        }).addOnSuccessListener(aVoid -> {
+                    Toast.makeText(SellActivity.this, "Product Uploaded Successfully!", Toast.LENGTH_SHORT).show();
+                    // Optionally redirect to home page after success
+                    Intent intent = new Intent(SellActivity.this, HomePage.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(SellActivity.this, "Failed to upload product: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });;
+    }
+    private String encodeImageToBase64(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 }

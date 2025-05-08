@@ -40,6 +40,11 @@
     <string name="checkout">Checkout</string>
     <string name="total_0_00">Total: £0.00</string>
     <string name="searchbar">Search</string>
+    <string name="buy">Buy</string>
+    <string name="_0_00buy">£0.00</string>
+    <string name="product_description">Product Description</string>
+    <string name="product_name">Product Name</string>
+    <string name="verify_email">Verify Email</string>
 
 
 </resources>
