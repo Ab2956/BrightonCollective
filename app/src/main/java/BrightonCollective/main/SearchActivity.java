@@ -76,62 +76,62 @@ public class SearchActivity extends AppCompatActivity {
         product_list.add(new Product(
                 "jbl headphones",
                 "Noise-canceling Wireless Headphones",
-                "https://www.trustedreviews.com/wp-content/uploads/sites/54/2021/09/4._jbl_quantum_350_wireless_product_image_angle.jpg",
+                "https://images.unsplash.com/photo-1619296794093-3df1ae6819a8?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 39.99
         ));
         product_list.add(new Product(
                 "macbook air",
                 "Lightweight and Great for Note-taking",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLX_gEUY3oVXfw2xW87cqzfcIUwRgU6wRTKVXVId_inA&s&ec=72940544",
+                "https://images.unsplash.com/photo-1717865499857-ec35ce6e65fa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMGFpcnxlbnwwfHwwfHx8MA%3D%3D",
                 349.99
         ));
         product_list.add(new Product(
-                "smart water bottle",
-                "Tracks Hydration and reminds you to drink water",
-                "https://wetried.it/cdn-cgi/imagedelivery/2TqHVWJc_vpFBiW-iQAMcw/wetried.it/2021/06/larq-watter-bottle.jpg/w=1920,h=1290",
-                119.49
+                "sunglasses",
+                "Rayban's Sunglasses",
+                "https://images.unsplash.com/photo-1621331122533-465bdcfa6e01?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmF5YmFuJTIwc3VuZ2xhc3Nlc3xlbnwwfHwwfHx8MA%3D%3D",
+                95.99
         ));
         product_list.add(new Product(
                 "t-shirt",
-                "Plain White T-Shirt",
-                "https://cdn12.picryl.com/photo/2016/12/31/blank-t-shirts-white-7df460-1024.png",
-                15.99
+                "Uniqlo Plain White T-Shirt",
+                "https://images.unsplash.com/photo-1722310752951-4d459d28c678?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                24.99
         ));
         product_list.add(new Product(
                 "smart clock",
                 "Digital LED Clock",
-                "https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/01/Lenovo-Ambient-Light-Dock_Squid_Yellow.png",
+                "https://images.unsplash.com/photo-1571251455684-2eb131fdb294?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 25.99
         ));
         product_list.add(new Product(
                 "desk lamp",
-                "Adjustable brightness LED lamp with USB port",
-                "https://upload.wikimedia.org/wikipedia/commons/d/d5/Desk_lamp.jpg",
+                "Adjustable brightness lamp ",
+                "https://images.unsplash.com/photo-1621447980929-6638614633c8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVzayUyMGxhbXB8ZW58MHx8MHx8fDA%3D",
                 34.99
         ));
         product_list.add(new Product(
                 "backpack",
                 "Waterproof laptop backpack with USB charging port",
-                "https://cdn.printerval.com/unsafe/960x960/asset/11561d0c0b010b0c190c111b561b171557414c404c4f4849570a57111457481c4b1a1a4d574c48404e4d4c484f414d571114271e0d1414001e0d1414564c48404e4d4c484f414d271711114a5612081f",
+                "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFja3BhY2t8ZW58MHx8MHx8fDA%3D",
                 31.99
         ));
         product_list.add(new Product(
                 "bluetooth speaker",
                 "Portable speaker for music and podcasts",
-                "https://images.pexels.com/photos/1034653/pexels-photo-1034653.jpeg",
+                "https://images.unsplash.com/photo-1507878566509-a0dbe19677a5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJsdWV0b290aCUyMHNwZWFrZXJ8ZW58MHx8MHx8fDA%3D",
                 55.49
         ));
         product_list.add(new Product(
                 "desk fan",
                 "USB-powered mini fan for dorm or library desk",
-                "https://c.media-amazon.com/images/I/716+kxlqcdL._AC_SY300_SX300_.jpg",
+                "https://images.unsplash.com/photo-1665298455913-dd43714f5ad1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHNtYWxsJTIwZGVzayUyMGZhbnxlbnwwfHwwfHx8Mg%3D%3D",
                 14.99
         ));
         product_list.add(new Product(
-                "hp portable printer",
-                "Compact wireless printer for documents and assignments",
-                "https://www.trustedreviews.com/wp-content/uploads/sites/7/2025/03/HP-ENVY-6120e-alt-820x461.jpg",
-                99.99
+                "camera",
+                "Capture HD Photos and Videos",
+                "https://images.unsplash.com/photo-1452780212940-6f5c0d14d848?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNhbWVyYXxlbnwwfHwwfHx8Mg%3D%3D",
+                49.99
         ));
 
         GridLayout gridLayout = findViewById(R.id.grid_layout);
@@ -140,8 +140,7 @@ public class SearchActivity extends AppCompatActivity {
         for (Product product : product_list) {
             // Create CardView
             CardView cardView = new CardView(this);
-            cardView.setRadius(16);
-            cardView.setCardElevation(8);
+            cardView.setRadius(20);
             cardView.setUseCompatPadding(true);
 
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
@@ -167,7 +166,7 @@ public class SearchActivity extends AppCompatActivity {
             // TextView for product name
             TextView nameText = new TextView(this);
             nameText.setText(product.getName());
-            nameText.setTextColor(Color.WHITE);
+            nameText.setTextColor(Color.BLACK);
             nameText.setTextSize(16);
             nameText.setGravity(Gravity.CENTER);
 
@@ -175,7 +174,7 @@ public class SearchActivity extends AppCompatActivity {
             TextView priceText = new TextView(this);
             priceText.setText("£" + String.format("%.2f", product.getPrice()));
             priceText.setTextSize(14);
-            priceText.setTextColor(Color.WHITE);
+            priceText.setTextColor(Color.BLACK);
             priceText.setGravity(Gravity.CENTER);
 
             // Add views to layout
@@ -190,10 +189,10 @@ public class SearchActivity extends AppCompatActivity {
             // Set OnClickListener to open ProductDetailsActivity
             cardView.setOnClickListener(v -> {
                 Intent intent = new Intent(this, ProductDetailsActivity.class);
-                intent.putExtra("name", product.getName());
-                intent.putExtra("description", product.getDescription());
-                intent.putExtra("price", product.getPrice());
-                intent.putExtra("imageUrl", product.getImageUrl());
+                intent.putExtra("productName", product.getName());
+                intent.putExtra("productDescription", product.getDescription());
+                intent.putExtra("productPrice", product.getPrice());
+                intent.putExtra("productImage", product.getImageUrl());
                 startActivity(intent);
             });
 
@@ -222,7 +221,7 @@ public class SearchActivity extends AppCompatActivity {
             if (product_list.get(i).getName().toLowerCase().contains(search_term)) {
 
                 if (!productFound) {
-                    results.setText("Your Results: "+ product_list.get(i).getName());
+                    results.setText("Your Results:");
                     productFound = true;
                 }
 
@@ -282,10 +281,10 @@ public class SearchActivity extends AppCompatActivity {
                 int finalI = i;
                 cardView.setOnClickListener(v1 -> {
                     Intent intent = new Intent(this, ProductDetailsActivity.class);
-                    intent.putExtra("name", product_list.get(finalI).getName());
-                    intent.putExtra("description", product_list.get(finalI).getDescription());
-                    intent.putExtra("price", product_list.get(finalI).getPrice());
-                    intent.putExtra("imageUrl", product_list.get(finalI).getImageUrl());
+                    intent.putExtra("productName", product_list.get(finalI).getName());
+                    intent.putExtra("productDescription", product_list.get(finalI).getDescription());
+                    intent.putExtra("productPrice", product_list.get(finalI).getPrice());
+                    intent.putExtra("productImage", product_list.get(finalI).getImageUrl());
                     startActivity(intent);
                 });
             }
