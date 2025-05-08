@@ -53,9 +53,8 @@ public class SearchActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_search);
 
-        EditText search_input = findViewById(R.id.SearchInput);
+
         ImageButton search_button = findViewById(R.id.SearchButton);
-        TextView results = findViewById(R.id.results);
 
         //layout2 = findViewById(R.id.layoutStructure);
         //databaseRef = FirebaseDatabase.getInstance().getReference("products");
@@ -168,6 +167,7 @@ public class SearchActivity extends AppCompatActivity {
             // TextView for product name
             TextView nameText = new TextView(this);
             nameText.setText(product.getName());
+            nameText.setTextColor(Color.WHITE);
             nameText.setTextSize(16);
             nameText.setGravity(Gravity.CENTER);
 
@@ -175,8 +175,8 @@ public class SearchActivity extends AppCompatActivity {
             TextView priceText = new TextView(this);
             priceText.setText("£" + String.format("%.2f", product.getPrice()));
             priceText.setTextSize(14);
+            priceText.setTextColor(Color.WHITE);
             priceText.setGravity(Gravity.CENTER);
-            priceText.setTextColor(Color.GRAY);
 
             // Add views to layout
             linearLayout.addView(imageView);
@@ -197,91 +197,105 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
             });
 
-            gridLayout.addView(cardView);
         }
-        GridLayout search_gridLayout = findViewById(R.id.grid_layout);
-        search_gridLayout.setColumnCount(2);
 
         search_button.setOnClickListener(v -> {
-            gridLayout.removeAllViews();
-            search_gridLayout.removeAllViews();
-            String search_term = search_input.getText().toString().trim();
-            search_term.toLowerCase();
-            for (int i = 0; i < product_list.size(); i++) {
-                if(search_term == product_list.get(i).getName()) {
-
-                    results.setText("Your Results:");
-
-                    CardView cardView = new CardView(this);
-                    cardView.setRadius(16);
-                    cardView.setCardElevation(8);
-                    cardView.setUseCompatPadding(true);
-
-                    GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                    params.width = 0;
-                    params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-                    params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-                    params.setMargins(16, 16, 16, 16);
-                    cardView.setLayoutParams(params);
-
-                    // Create vertical layout
-                    LinearLayout linearLayout = new LinearLayout(this);
-                    linearLayout.setOrientation(LinearLayout.VERTICAL);
-                    linearLayout.setPadding(16, 16, 16, 16);
-                    linearLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-
-                    // ImageView for product image
-                    ImageView imageView = new ImageView(this);
-                    LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(200, 200);
-                    imageView.setLayoutParams(imgParams);
-                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    Picasso.get().load(product_list.get(i).getImageUrl()).into(imageView); // load image from URL
-
-                    // TextView for product name
-                    TextView nameText = new TextView(this);
-                    nameText.setText(product_list.get(i).getName());
-                    nameText.setTextSize(16);
-                    nameText.setGravity(Gravity.CENTER);
-
-                    // TextView for product price
-                    TextView priceText = new TextView(this);
-                    priceText.setText("£" + String.format("%.2f", product_list.get(i).getPrice()));
-                    priceText.setTextSize(14);
-                    priceText.setGravity(Gravity.CENTER);
-                    priceText.setTextColor(Color.GRAY);
-
-                    // Add views to layout
-                    linearLayout.addView(imageView);
-                    linearLayout.addView(nameText);
-                    linearLayout.addView(priceText);
-
-                    // Add layout to card and card to grid
-                    cardView.addView(linearLayout);
-                    gridLayout.addView(cardView);
-
-                    // Set OnClickListener to open ProductDetailActivity
-                    int finalI = i;
-                    cardView.setOnClickListener(v1 -> {
-                        Intent intent = new Intent(this, ProductDetailsActivity.class);
-                        intent.putExtra("name", product_list.get(finalI).getName());
-                        intent.putExtra("description", product_list.get(finalI).getDescription());
-                        intent.putExtra("price", product_list.get(finalI).getPrice());
-                        intent.putExtra("imageUrl", product_list.get(finalI).getImageUrl());
-                        startActivity(intent);
-                    });
-
-                    gridLayout.addView(cardView);
-                } else {
-                    results.setText("Product Not Found!!");
-                }
-            }
-
+            search_product(product_list);
         });
-
     }
 
+    private void search_product(List<Product> product_list) {
+        EditText search_input = findViewById(R.id.SearchInput);
+        GridLayout gridLayout = findViewById(R.id.grid_layout);
+        TextView results = findViewById(R.id.results);
+        gridLayout.removeAllViews();  // Clear grid before adding new results
 
+        String search_term = search_input.getText().toString().trim().toLowerCase();  // ensure lowercase comparison
 
+        boolean productFound = false;  // Flag to track if a product was found
+
+        // First, set the results message to be empty
+        results.setText("");  // Clear any previous results text
+
+        for (int i = 0; i < product_list.size(); i++) {
+            // Compare the search term to the product name (case-insensitive)
+            if (product_list.get(i).getName().toLowerCase().contains(search_term)) {
+
+                if (!productFound) {
+                    results.setText("Your Results: "+ product_list.get(i).getName());
+                    productFound = true;
+                }
+
+                // Create CardView for the matching product
+                CardView cardView = new CardView(this);
+                cardView.setRadius(16);
+                cardView.setCardElevation(8);
+                cardView.setUseCompatPadding(true);
+
+                if (cardView.getParent() != null) {
+                    ((ViewGroup) cardView.getParent()).removeView(cardView);
+                }
+
+                GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+                params.width = 0;
+                params.height = GridLayout.LayoutParams.WRAP_CONTENT;
+                params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+                params.setMargins(16, 16, 16, 16);
+                cardView.setLayoutParams(params);
+
+                // Create vertical layout for product content
+                LinearLayout linearLayout = new LinearLayout(this);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                linearLayout.setPadding(16, 16, 16, 16);
+                linearLayout.setGravity(Gravity.CENTER_HORIZONTAL);
+
+                // ImageView for product image
+                ImageView imageView = new ImageView(this);
+                LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(200, 200);
+                imageView.setLayoutParams(imgParams);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                Picasso.get().load(product_list.get(i).getImageUrl()).into(imageView); // load image from URL
+
+                // TextView for product name
+                TextView nameText = new TextView(this);
+                nameText.setText(product_list.get(i).getName());
+                nameText.setTextSize(16);
+                nameText.setGravity(Gravity.CENTER);
+
+                // TextView for product price
+                TextView priceText = new TextView(this);
+                priceText.setText("£" + String.format("%.2f", product_list.get(i).getPrice()));
+                priceText.setTextSize(14);
+                priceText.setGravity(Gravity.CENTER);
+                priceText.setTextColor(Color.GRAY);
+
+                // Add views to the vertical layout
+                linearLayout.addView(imageView);
+                linearLayout.addView(nameText);
+                linearLayout.addView(priceText);
+
+                // Add the layout to the card and card to the grid layout
+                cardView.addView(linearLayout);
+                gridLayout.addView(cardView);
+
+                // Set OnClickListener to open ProductDetailActivity
+                int finalI = i;
+                cardView.setOnClickListener(v1 -> {
+                    Intent intent = new Intent(this, ProductDetailsActivity.class);
+                    intent.putExtra("name", product_list.get(finalI).getName());
+                    intent.putExtra("description", product_list.get(finalI).getDescription());
+                    intent.putExtra("price", product_list.get(finalI).getPrice());
+                    intent.putExtra("imageUrl", product_list.get(finalI).getImageUrl());
+                    startActivity(intent);
+                });
+            }
+        }
+
+        // If no products matched the search term
+        if (!productFound) {
+            results.setText("Product Not Found!!");
+        }
+    }
 
 
     //private void searchProductByName(String query) {
