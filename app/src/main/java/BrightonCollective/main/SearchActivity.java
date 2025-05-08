@@ -89,7 +89,7 @@ public class SearchActivity extends AppCompatActivity {
                 "sunglasses",
                 "Rayban's Sunglasses",
                 "https://images.unsplash.com/photo-1621331122533-465bdcfa6e01?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmF5YmFuJTIwc3VuZ2xhc3Nlc3xlbnwwfHwwfHx8MA%3D%3D",
-                95.99
+                94.99
         ));
         product_list.add(new Product(
                 "t-shirt",
