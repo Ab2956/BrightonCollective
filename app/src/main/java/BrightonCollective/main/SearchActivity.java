@@ -74,22 +74,22 @@ public class SearchActivity extends AppCompatActivity {
 
         List<Product> product_list = new ArrayList<>();
         product_list.add(new Product(
-                "jbl headphones",
-                "Noise-canceling Wireless Headphones",
-                "https://images.unsplash.com/photo-1619296794093-3df1ae6819a8?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                39.99
+                "bucket hat",
+                "A bucket hat with a pink ribbon",
+                "https://images.unsplash.com/photo-1733814489989-f7b6fa2a44cb?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                19.99
         ));
         product_list.add(new Product(
-                "macbook air",
-                "Lightweight and Great for Note-taking",
-                "https://images.unsplash.com/photo-1717865499857-ec35ce6e65fa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMGFpcnxlbnwwfHwwfHx8MA%3D%3D",
-                349.99
+                "gray tracksuit",
+                "A gray Tracksuit",
+                "https://images.unsplash.com/photo-1715609105250-ee1a91942ee2?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                22.99
         ));
         product_list.add(new Product(
                 "sunglasses",
                 "Rayban's Sunglasses",
                 "https://images.unsplash.com/photo-1621331122533-465bdcfa6e01?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmF5YmFuJTIwc3VuZ2xhc3Nlc3xlbnwwfHwwfHx8MA%3D%3D",
-                94.99
+                79.99
         ));
         product_list.add(new Product(
                 "t-shirt",
@@ -98,40 +98,52 @@ public class SearchActivity extends AppCompatActivity {
                 24.99
         ));
         product_list.add(new Product(
-                "smart clock",
-                "Digital LED Clock",
-                "https://images.unsplash.com/photo-1571251455684-2eb131fdb294?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                25.99
+                "beanie",
+                "A Black Beanie",
+                "https://images.unsplash.com/photo-1648483092137-6e63796c8b06?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                12.99
         ));
         product_list.add(new Product(
-                "desk lamp",
-                "Adjustable brightness lamp ",
-                "https://images.unsplash.com/photo-1621447980929-6638614633c8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVzayUyMGxhbXB8ZW58MHx8MHx8fDA%3D",
-                34.99
+                "blue jeans",
+                "Baggy Blue Jeans",
+                "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1994&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                15.99
         ));
         product_list.add(new Product(
-                "backpack",
-                "Waterproof laptop backpack with USB charging port",
-                "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFja3BhY2t8ZW58MHx8MHx8fDA%3D",
-                31.99
+                "floral scarf",
+                "A red and black printed floral scarf",
+                "https://images.unsplash.com/photo-1601244005535-a48d21d951ac?q=80&w=1970&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                7.99
         ));
         product_list.add(new Product(
-                "bluetooth speaker",
-                "Portable speaker for music and podcasts",
-                "https://images.unsplash.com/photo-1507878566509-a0dbe19677a5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJsdWV0b290aCUyMHNwZWFrZXJ8ZW58MHx8MHx8fDA%3D",
-                55.49
+                "black wool scarf",
+                "A Black wool Scarf",
+                "https://images.unsplash.com/photo-1551381912-4e2e29c7fd17?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                4.99
         ));
         product_list.add(new Product(
-                "desk fan",
-                "USB-powered mini fan for dorm or library desk",
-                "https://images.unsplash.com/photo-1665298455913-dd43714f5ad1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHNtYWxsJTIwZGVzayUyMGZhbnxlbnwwfHwwfHx8Mg%3D%3D",
-                14.99
+                "black leather jacket",
+                "A black leather Jacket",
+                "https://images.unsplash.com/photo-1727515546577-f7d82a47b51d?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                29.99
         ));
         product_list.add(new Product(
-                "camera",
-                "Capture HD Photos and Videos",
-                "https://images.unsplash.com/photo-1452780212940-6f5c0d14d848?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNhbWVyYXxlbnwwfHwwfHx8Mg%3D%3D",
-                49.99
+                "leather belt",
+                "Black and Brown-bordered leather belt",
+                "https://images.unsplash.com/photo-1664286074240-d7059e004dff?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                11.99
+        ));
+        product_list.add(new Product(
+                "swim shorts",
+                "brown swim shorts",
+                "https://images.unsplash.com/photo-1532788031780-73fddc7e94fe?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHN3aW0lMjBzaG9ydHN8ZW58MHx8MHx8fDI%3D",
+                9.99
+        ));
+        product_list.add(new Product(
+                "sliders",
+                "Black Sliders with White stripes",
+                "https://images.unsplash.com/photo-1651913506606-2cac8f5e69a9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNsaWRlcnMlMjBzbGlwcGVyc3xlbnwwfHwwfHx8Mg%3D%3D",
+                3.99
         ));
 
         GridLayout gridLayout = findViewById(R.id.grid_layout);
