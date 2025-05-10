@@ -1,8 +1,6 @@
 package BrightonCollective.main;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -14,32 +12,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
-
-import java.io.InputStream;
-import java.lang.reflect.Array;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class SearchActivity extends AppCompatActivity {
     //private DatabaseReference databaseRef;
@@ -55,10 +33,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
         ImageButton search_button = findViewById(R.id.SearchButton);
-
-        //layout2 = findViewById(R.id.layoutStructure);
-        //databaseRef = FirebaseDatabase.getInstance().getReference("products");
-        //executorService = Executors.newFixedThreadPool(4);
+        // back button for ui
         backBtn = findViewById(R.id.backButton);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +44,6 @@ public class SearchActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        //fetchProductsFromDatabase();
 
         List<Product> product_list = new ArrayList<>();
         product_list.add(new Product(
@@ -160,8 +133,10 @@ public class SearchActivity extends AppCompatActivity {
             ImageView imageView = new ImageView(this);
             LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(200, 200);
             imageView.setLayoutParams(imgParams);
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            Picasso.get().load(product.getImageUrl()).into(imageView); // load image from URL
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);// load image from URL
+            Glide.with(this)
+                    .load(product.getImageUrl())
+                    .into(imageView);
 
             // TextView for product name
             TextView nameText = new TextView(this);
@@ -253,7 +228,10 @@ public class SearchActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(200, 200);
                 imageView.setLayoutParams(imgParams);
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                Picasso.get().load(product_list.get(i).getImageUrl()).into(imageView); // load image from URL
+                // glide to get image
+                Glide.with(this)
+                        .load(product_list.get(i).getImageUrl())
+                        .into(imageView);// load image from URL
 
                 // TextView for product name
                 TextView nameText = new TextView(this);
@@ -296,113 +274,7 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-
-    //private void searchProductByName(String query) {
-        //layout2.removeAllViews();
-
-        //databaseRef.orderByChild("name").equalTo(query).addListenerForSingleValueEvent(new ValueEventListener() {
-            //@Override
-            //public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //if (snapshot.exists()) {
-                    //for (DataSnapshot productSnapshot : snapshot.getChildren()) {
-                        //Product product = productSnapshot.getValue(Product.class);
-                        //if (product != null) {
-                            //downloadImageAndCreateButton(product);
-                        //}
-                    //}
-                //} else {
-                    //Toast.makeText(SearchActivity.this, "No product found", Toast.LENGTH_SHORT).show();
-                //}
-            //}
-
-            //@Override
-            //public void onCancelled(@NonNull DatabaseError error) {
-                //Toast.makeText(SearchActivity.this, "Search failed", Toast.LENGTH_SHORT).show();
-            //}
-        //});
-    //}
-
-    //private void fetchProductsFromDatabase() {
-        //databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            //@Override
-            //public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //for (DataSnapshot productSnapshot : snapshot.getChildren()) {
-                    //Product product = productSnapshot.getValue(Product.class);
-                    //if (product != null && product.getImageUrl() != null) {
-                        //downloadImageAndCreateButton(product);
-                    //}
-                //}
-            //}
-
-            //@Override
-            //public void onCancelled(@NonNull DatabaseError error) {
-                //Toast.makeText(SearchActivity.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
-            //}
-        //});
-    //}
-
-
-
-    //private void downloadImageAndCreateButton(Product product) {
-        //executorService.execute(() -> {
-            //try {
-                //URL url = new URL(product.getImageUrl());
-               // HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                //connection.setDoInput(true);
-                //connection.connect();
-                //InputStream input = connection.getInputStream();
-                //Bitmap bitmap = BitmapFactory.decodeStream(input);
-
-                //runOnUiThread(() -> {
-                    //ImageButton imageButton = new ImageButton(SearchActivity.this);
-                    //imageButton.setImageBitmap(bitmap);
-                    //imageButton.setBackgroundColor(android.graphics.Color.TRANSPARENT);
-
-                    //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                            //ViewGroup.LayoutParams.WRAP_CONTENT,
-                            //ViewGroup.LayoutParams.WRAP_CONTENT
-                    //);
-                    //imageButton.setLayoutParams(params);
-
-                    //imageButton.setOnClickListener(v -> {
-                            //Toast.makeText(SearchActivity.this, "Clicked: " + product.getName(), Toast.LENGTH_SHORT).show();
-                            //Intent intent = new Intent(SearchActivity.this, ProductDetailsActivity.class);
-                            //intent.putExtra("name", product.name); // Or pass product ID or image URL
-                            //startActivity(intent);
-                    //});
-
-                    //layout2.addView(imageButton);
-                //});
-
-            //} catch (Exception e) {
-                //e.printStackTrace();
-            //}
-        //});
-    //}
-
-    //public static class Product {
-        //public String name;
-        //public String imageUrl;
-
-        //public Product() {
-            // Default constructor
-        //}
-
-        //public Product(String name, String imageUrl) {
-            //this.name = name;
-            //this.imageUrl = imageUrl;
-        //}
-
-        //public String getImageUrl() {
-            //return imageUrl;
-        //}
-
-        //public String getName() {
-            //return name;
-        //}
-    //}
 }
-
     
     
 
