@@ -27,7 +27,7 @@
             android:layout_marginStart="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Back"
-            android:tint="@android:color/white"
+            app:tint="@android:color/white"
             app:srcCompat="@android:drawable/ic_menu_revert" />
 
         <TextView

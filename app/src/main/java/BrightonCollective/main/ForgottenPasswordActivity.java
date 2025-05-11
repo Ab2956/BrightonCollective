@@ -40,7 +40,7 @@ public class ForgottenPasswordActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ForgottenPasswordActivity.this, HomePage.class);
+                Intent intent = new Intent(ForgottenPasswordActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

@@ -22,11 +22,6 @@ public class MyAccountActivity extends AppCompatActivity {
         editProfileBtn = findViewById(R.id.editProfileBtn);
         settingsBtn = findViewById(R.id.settingsBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
-
-        homeBtn = findViewById(R.id.homeBtn);
-        searchBtn = findViewById(R.id.searchBtn);
-        messagesBtn = findViewById(R.id.messagesBtn);
-        myAccountBtn = findViewById(R.id.myAccountBtn);
         backBtn = findViewById(R.id.backBtn);  // Initialize the back button
 
         // Make the back button go to the main landing page (Home Page)

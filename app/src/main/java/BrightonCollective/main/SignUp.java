@@ -26,7 +26,7 @@ public class SignUp extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         fullNameInput = findViewById(R.id.UserInputFullName);
-        EditText emailInput = findViewById(R.id.UserInputEmail);
+        emailInput = findViewById(R.id.UserInputEmail);
         passwordInput = findViewById(R.id.UserInputPassword);
         confirmPasswordInput = findViewById(R.id.UserConfirmPassword);
         universityGroup = findViewById(R.id.universityRadioGroup);

@@ -70,6 +70,7 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="28dp"
+                android:contentDescription="@string/search_result"
                 android:src="@drawable/search_icon"
                 android:background="?attr/selectableItemBackground"
                 />
@@ -85,6 +86,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/results"
                 android:text=" "
+                android:contentDescription="@string/search_result"
                 android:layout_marginStart="30dp"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -96,7 +98,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:contentDescription="@string/scroll">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

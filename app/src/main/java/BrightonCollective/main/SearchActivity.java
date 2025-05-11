@@ -45,84 +45,13 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        List<Product> product_list = new ArrayList<>();
-        product_list.add(new Product(
-                "bucket hat",
-                "A bucket hat with a pink ribbon",
-                "https://images.unsplash.com/photo-1733814489989-f7b6fa2a44cb?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                19.99
-        ));
-        product_list.add(new Product(
-                "gray tracksuit",
-                "A gray Tracksuit",
-                "https://images.unsplash.com/photo-1715609105250-ee1a91942ee2?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                22.99
-        ));
-        product_list.add(new Product(
-                "sunglasses",
-                "Rayban's Sunglasses",
-                "https://images.unsplash.com/photo-1621331122533-465bdcfa6e01?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmF5YmFuJTIwc3VuZ2xhc3Nlc3xlbnwwfHwwfHx8MA%3D%3D",
-                79.99
-        ));
-        product_list.add(new Product(
-                "t-shirt",
-                "Uniqlo Plain White T-Shirt",
-                "https://images.unsplash.com/photo-1722310752951-4d459d28c678?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                24.99
-        ));
-        product_list.add(new Product(
-                "beanie",
-                "A Black Beanie",
-                "https://images.unsplash.com/photo-1648483092137-6e63796c8b06?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                12.99
-        ));
-        product_list.add(new Product(
-                "blue jeans",
-                "Baggy Blue Jeans",
-                "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1994&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                15.99
-        ));
-        product_list.add(new Product(
-                "floral scarf",
-                "A red and black printed floral scarf",
-                "https://images.unsplash.com/photo-1601244005535-a48d21d951ac?q=80&w=1970&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                7.99
-        ));
-        product_list.add(new Product(
-                "black wool scarf",
-                "A Black wool Scarf",
-                "https://images.unsplash.com/photo-1551381912-4e2e29c7fd17?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                4.99
-        ));
-        product_list.add(new Product(
-                "black leather jacket",
-                "A black leather Jacket",
-                "https://images.unsplash.com/photo-1727515546577-f7d82a47b51d?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                29.99
-        ));
-        product_list.add(new Product(
-                "leather belt",
-                "Black and Brown-bordered leather belt",
-                "https://images.unsplash.com/photo-1664286074240-d7059e004dff?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                11.99
-        ));
-        product_list.add(new Product(
-                "swim shorts",
-                "brown swim shorts",
-                "https://images.unsplash.com/photo-1532788031780-73fddc7e94fe?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHN3aW0lMjBzaG9ydHN8ZW58MHx8MHx8fDI%3D",
-                9.99
-        ));
-        product_list.add(new Product(
-                "sliders",
-                "Black Sliders with White stripes",
-                "https://images.unsplash.com/photo-1651913506606-2cac8f5e69a9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNsaWRlcnMlMjBzbGlwcGVyc3xlbnwwfHwwfHx8Mg%3D%3D",
-                3.99
-        ));
+        List<Product> productList = ProductList.getInstance().getProducts();
+        
 
         GridLayout gridLayout = findViewById(R.id.grid_layout);
         gridLayout.setColumnCount(2);
 
-        for (Product product : product_list) {
+        for (Product product : productList) {
             // Create CardView
             CardView cardView = new CardView(this);
             cardView.setRadius(20);
@@ -186,7 +115,7 @@ public class SearchActivity extends AppCompatActivity {
         }
 
         search_button.setOnClickListener(v -> {
-            search_product(product_list);
+            search_product(productList);
         });
     }
 

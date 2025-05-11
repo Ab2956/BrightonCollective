@@ -45,6 +45,17 @@
     <string name="product_description">Product Description</string>
     <string name="product_name">Product Name</string>
     <string name="verify_email">Verify Email</string>
+    <string name="product_price">product_price</string>
+    <string name="product_descriptionprp">product_description</string>
+    <string name="product_namepro">product_name</string>
+    <string name="productimage">productImage</string>
+    <string name="send_verification_email">Send Verification Email</string>
+    <string name="email_verified">Email Verified</string>
+    <string name="enter_your_university_email">Enter your University email</string>
+    <string name="search_result">Search Result</string>
+    <string name="scroll">scroll</string>
+    <string name="qty_and_price">Qty and Price</string>
+    <string name="item_name">Item Name</string>
 
 
 </resources>

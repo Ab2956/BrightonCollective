@@ -7,13 +7,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,8 +57,11 @@ public class BasketActivity extends AppCompatActivity {
 
         // Set button action
         buttonCheckout.setOnClickListener(v -> {
-            Toast.makeText(this, "Checkout clicked!", Toast.LENGTH_SHORT).show();
             BasketManager.getInstance().clearBasket();
+            adapter.notifyDataSetChanged();
+            textViewTotalPrice.setText("Total: £0.00");
+            Toast.makeText(this, "Checkout clicked!", Toast.LENGTH_SHORT).show();
+
         });
     }
 }
