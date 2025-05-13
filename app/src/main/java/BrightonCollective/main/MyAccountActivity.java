@@ -1,59 +1,127 @@
 package BrightonCollective.main;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.activity.result.PickVisualMediaRequest;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
 
 public class MyAccountActivity extends AppCompatActivity {
 
     Button editProfileBtn, settingsBtn, logoutBtn;
-    ImageButton homeBtn, searchBtn, messagesBtn, myAccountBtn, backBtn; // Added backBtn
+    ImageButton homeBtn, searchBtn, messagesBtn, myAccountBtn, backBtn;
+    TextView userName;
+    ImageView profileImage;
+
+    private ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
+    private ActivityResultLauncher<Intent> legacyImagePickerLauncher;
+
+    private SharedPreferences sharedPreferences;
+    private static final String PREFS_NAME = "MyAccountPrefs";
+    private static final String KEY_NAME = "user_name";
+    private static final String KEY_IMAGE_URI = "profile_image_uri";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(android.graphics.Color.TRANSPARENT);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            getWindow().setDecorFitsSystemWindows(false);
+        } else {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            );
+        }
         setContentView(R.layout.activity_my_account);
 
-        // Initialize views safely
+        sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+
+        // Initialize views
         editProfileBtn = findViewById(R.id.editProfileBtn);
         settingsBtn = findViewById(R.id.settingsBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
-        backBtn = findViewById(R.id.backBtn);  // Initialize the back button
+        backBtn = findViewById(R.id.backBtn);
+        userName = findViewById(R.id.userName);
+        profileImage = findViewById(R.id.profileImage);
 
-        // Make the back button go to the main landing page (Home Page)
+        homeBtn = findViewById(R.id.homeBtn);
+        searchBtn = findViewById(R.id.searchBtn);
+        messagesBtn = findViewById(R.id.messagesBtn);
+        myAccountBtn = findViewById(R.id.myAccountBtn);
+
+        // Load saved data
+        loadUserData();
+
+        // Android 13+ photo picker
+        pickMedia = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
+            if (uri != null) {
+                profileImage.setImageURI(uri);
+                saveProfileImageUri(uri.toString());
+            } else {
+                Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Legacy fallback picker
+        legacyImagePickerLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Uri imageUri = result.getData().getData();
+                        try {
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                            profileImage.setImageBitmap(bitmap);
+                            saveProfileImageUri(imageUri.toString());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Toast.makeText(this, "Failed to load image.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+
+        // Image click
+        profileImage.setOnClickListener(v -> openImagePicker());
+
         if (backBtn != null) {
             backBtn.setOnClickListener(v -> {
-                // Navigate to the Home Page activity (main landing page)
-                Intent intent = new Intent(MyAccountActivity.this, HomePage.class);
-                startActivity(intent);
-                finish(); // Close current activity after opening the Home Page
+                startActivity(new Intent(MyAccountActivity.this, HomePage.class));
+                finish();
             });
         }
 
-        // Other button functionality remains unchanged
         if (editProfileBtn != null) {
-            editProfileBtn.setOnClickListener(v -> {
-                // Add logic to open edit profile activity
-                Toast.makeText(this, "Edit Profile clicked", Toast.LENGTH_SHORT).show();
-            });
+            editProfileBtn.setOnClickListener(v -> showEditProfileDialog());
         }
 
         if (settingsBtn != null) {
-            settingsBtn.setOnClickListener(v -> {
-                // Add logic to open settings activity
-                Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
-            });
+            settingsBtn.setOnClickListener(v -> startActivity(new Intent(this, SettingsActivity.class)));
         }
 
         if (logoutBtn != null) {
             logoutBtn.setOnClickListener(v -> {
-                // Go back to login activity
-                Intent intent = new Intent(MyAccountActivity.this, LoginActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, LoginActivity.class));
                 finish();
             });
         }
@@ -71,26 +139,72 @@ public class MyAccountActivity extends AppCompatActivity {
         }
 
         if (myAccountBtn != null) {
-            myAccountBtn.setOnClickListener(v -> recreate()); // Reload current activity
+            myAccountBtn.setOnClickListener(v -> recreate());
         }
-
-        // If any views are missing, warn the developer
-        checkForMissingViews();
     }
 
-    // Override the back button press (both physical and gesture) to navigate to HomePage
+    private void openImagePicker() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            pickMedia.launch(new PickVisualMediaRequest.Builder()
+                    .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
+                    .build());
+        } else {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            legacyImagePickerLauncher.launch(intent);
+        }
+    }
+
+    private void showEditProfileDialog() {
+        final EditText input = new EditText(this);
+        input.setText(userName.getText());
+
+        new AlertDialog.Builder(this, R.style.AlertDialogTheme)
+                .setTitle("Edit Profile Name")
+                .setMessage("Enter your new name:")
+                .setView(input)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    String newName = input.getText().toString().trim();
+                    if (!newName.isEmpty()) {
+                        userName.setText(newName);
+                        saveUserName(newName);
+                        Toast.makeText(this, "Name updated!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Name cannot be empty.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.cancel())
+                .show();
+    }
+
+    private void loadUserData() {
+        String savedName = sharedPreferences.getString(KEY_NAME, "");
+        String savedImageUri = sharedPreferences.getString(KEY_IMAGE_URI, "");
+
+        if (!savedName.isEmpty()) {
+            userName.setText(savedName);
+        }
+
+        if (!savedImageUri.isEmpty()) {
+            Uri uri = Uri.parse(savedImageUri);
+            profileImage.setImageURI(uri);
+        }
+    }
+
+    private void saveUserName(String name) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_NAME, name);
+        editor.apply();
+    }
+
+    private void saveProfileImageUri(String uriString) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_IMAGE_URI, uriString);
+        editor.apply();
+    }
+
     @Override
     public void onBackPressed() {
-        // Navigate to the Home Page activity (main landing page)
-        Intent intent = new Intent(MyAccountActivity.this, HomePage.class);
-        startActivity(intent);
-        finish(); // Close current activity after opening the Home Page
-    }
-
-    private void checkForMissingViews() {
-        if (editProfileBtn == null || settingsBtn == null || logoutBtn == null ||
-                homeBtn == null || searchBtn == null || messagesBtn == null || myAccountBtn == null || backBtn == null) {
-            Toast.makeText(this, "Warning: One or more buttons are missing from the layout.", Toast.LENGTH_LONG).show();
-        }
+        startActivity(new Intent(MyAccountActivity.this, HomePage.class));
+        finish();
     }
 }

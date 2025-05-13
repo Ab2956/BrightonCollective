@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     tools:context=".MyAccountActivity"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="false"
+    android:paddingTop="?attr/actionBarSize">
 
     <!-- Top Bar: Back Button + Page Title -->
     <LinearLayout
@@ -61,21 +62,32 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Keep everything from your original layout here -->
+            <!-- User Name Above Profile Picture -->
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="Jackson"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <!-- Example buttons and layout placeholders -->
+            <!-- Profile Picture -->
             <ImageView
                 android:id="@+id/profileImage"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/profile_icon"
+                android:src="@drawable/default_profile"
                 android:scaleType="centerCrop"
                 android:background="@drawable/circle_background"
                 android:padding="2dp"
-                android:contentDescription="Profile Picture" />
-
+                android:contentDescription="Profile Picture"
+                android:clickable="true"
+                android:focusable="true" />
 
             <Button
                 android:id="@+id/editProfileBtn"
@@ -104,8 +116,6 @@
                 android:text="Log Out"
                 android:textSize="18sp"
                 style="@style/myButton" />
-
-            <!-- Add other content here if needed -->
 
         </LinearLayout>
     </ScrollView>
