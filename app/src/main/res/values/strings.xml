@@ -57,6 +57,8 @@
     <string name="qty_and_price">Qty and Price</string>
     <string name="item_name">Item Name</string>
     <string name="app_appearance">App Appearance</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="send">Send</string>
 
 
 </resources>
