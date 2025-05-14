@@ -64,11 +64,8 @@ public class MyAccountActivity extends AppCompatActivity {
         backBtn = findViewById(R.id.backBtn);
         userName = findViewById(R.id.userName);
         profileImage = findViewById(R.id.profileImage);
+        backBtn = findViewById(R.id.backBtn);
 
-        homeBtn = findViewById(R.id.homeBtn);
-        searchBtn = findViewById(R.id.searchBtn);
-        messagesBtn = findViewById(R.id.messagesBtn);
-        myAccountBtn = findViewById(R.id.myAccountBtn);
 
         // Load saved data
         loadUserData();
@@ -202,8 +199,8 @@ public class MyAccountActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    @Override
-    public void onBackPressed() {
+
+    public void backBtn() {
         startActivity(new Intent(MyAccountActivity.this, HomePage.class));
         finish();
     }
