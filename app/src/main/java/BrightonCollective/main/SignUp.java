@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignUp extends AppCompatActivity {
 
     private EditText fullNameInput, emailInput, passwordInput, confirmPasswordInput;
@@ -28,23 +31,19 @@ public class SignUp extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         fullNameInput = findViewById(R.id.UserInputFullName);
-        EditText emailInput = findViewById(R.id.UserInputEmail);
+        emailInput = findViewById(R.id.UserInputEmail);
         passwordInput = findViewById(R.id.UserInputPassword);
         confirmPasswordInput = findViewById(R.id.UserConfirmPassword);
         universityGroup = findViewById(R.id.universityRadioGroup);
         signUpButton = findViewById(R.id.SignUpButton);
         backBtn = findViewById(R.id.backButton);
 
-
         signUpButton.setOnClickListener(v -> createAccount());
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignUp.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        backBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUp.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 
@@ -71,30 +70,29 @@ public class SignUp extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        String userId = mAuth.getCurrentUser().getUid();
-                        db.collection("users").document(userId).set(
-                                new User(fullName, email, university)
-                        );
+                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                        Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, HomePage.class));
-                        finish();
+                        // ✅ Save user to Firestore as a flat map
+                        Map<String, Object> userMap = new HashMap<>();
+                        userMap.put("fullName", fullName);
+                        userMap.put("email", email);
+                        userMap.put("university", university);
+
+                        db.collection("users").document(uid).set(userMap)
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(this, HomePage.class));
+                                    finish();
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(this, "Firestore error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                });
                     } else {
-                        Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Auth error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
-
-    public static class User {
-        public String fullName, email, university;
-
-        public User() {} // Required for Firestore
-        public User(String fullName, String email, String university) {
-            this.fullName = fullName;
-            this.email = email;
-            this.university = university;
-        }
-    }
 }
+
 
 

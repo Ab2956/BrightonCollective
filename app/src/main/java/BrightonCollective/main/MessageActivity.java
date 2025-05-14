@@ -1,24 +1,62 @@
 package BrightonCollective.main;
 
+
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MessageActivity extends AppCompatActivity {
+
+    private FirebaseFirestore db;
+    private FirebaseAuth auth;
+    private String currentUserId;
+    private RecyclerView usersRecyclerView;
+    private UserAdapter userAdapter;
+    private List<User> userList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_message);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+        currentUserId = auth.getCurrentUser().getUid();
+
+        usersRecyclerView = findViewById(R.id.usersRecyclerView);
+        usersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        userAdapter = new UserAdapter(userList, user -> {
+            Intent intent = new Intent(MessageActivity.this, ChatActivity.class);
+            intent.putExtra("chatPartnerId", user.getUid());
+            startActivity(intent);
+        });
+
+        usersRecyclerView.setAdapter(userAdapter);
+
+        loadUsers();
+    }
+
+    private void loadUsers() {
+        db.collection("users").get().addOnSuccessListener(querySnapshot -> {
+            userList.clear();
+            for (DocumentSnapshot doc : querySnapshot) {
+                User user = doc.toObject(User.class);
+                if (user != null && !user.getUid().equals(currentUserId)) {
+                    userList.add(user);
+                }
+            }
+            userAdapter.notifyDataSetChanged();
         });
     }
 }
