@@ -56,6 +56,7 @@
     <string name="scroll">scroll</string>
     <string name="qty_and_price">Qty and Price</string>
     <string name="item_name">Item Name</string>
+    <string name="app_appearance">App Appearance</string>
 
 
 </resources>
