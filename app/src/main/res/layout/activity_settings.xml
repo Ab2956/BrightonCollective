@@ -29,7 +29,8 @@
                 android:layout_weight="20"
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/app_name"
-                app:srcCompat="@android:drawable/ic_menu_revert" />
+                app:srcCompat="@android:drawable/ic_menu_revert"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -47,7 +48,45 @@
 
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/app_appearance"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="26sp"
+                android:textColor="@color/white"
+                >
 
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/viewMode"
+                android:text=""
+                android:layout_marginStart="20sp"
+                >
+            </TextView>
+
+            <Switch
+                android:id="@+id/switchButton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:minHeight="48dp"
+                android:text="@string/app_appearance"
+                android:textColor="@color/white"
+                tools:ignore="UseSwitchCompatOrMaterialXml">
+
+            </Switch>
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

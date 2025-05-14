@@ -17,10 +17,8 @@ public class SignUp extends AppCompatActivity {
 
     private EditText fullNameInput, emailInput, passwordInput, confirmPasswordInput;
     private RadioGroup universityGroup;
-    private Button signUpButton;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private ImageButton backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +33,8 @@ public class SignUp extends AppCompatActivity {
         passwordInput = findViewById(R.id.UserInputPassword);
         confirmPasswordInput = findViewById(R.id.UserConfirmPassword);
         universityGroup = findViewById(R.id.universityRadioGroup);
-        signUpButton = findViewById(R.id.SignUpButton);
-        backBtn = findViewById(R.id.backButton);
+        Button signUpButton = findViewById(R.id.SignUpButton);
+        ImageButton backBtn = findViewById(R.id.backButton);
 
         signUpButton.setOnClickListener(v -> createAccount());
 

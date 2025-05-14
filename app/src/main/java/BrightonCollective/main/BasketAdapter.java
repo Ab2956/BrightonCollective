@@ -31,6 +31,9 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
         BasketItem item = itemList.get(position);
         holder.text1.setText(item.getName());
         holder.text2.setText("Qty: " + item.getQuantity() + " | £" + item.getPrice());
+
+        holder.text1.setTextColor(0xFFFFFFFF);
+        holder.text2.setTextColor(0xFFFFFFFF);
     }
 
     @Override
