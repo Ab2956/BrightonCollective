@@ -4,7 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColor"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="20"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@android:drawable/ic_menu_revert"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sellTitle"
+                android:layout_weight="50"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="34sp"
+                android:textColor="#D1D1D1">
+
+
+
+            </TextView>
+
+
+        </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -35,5 +76,5 @@
             android:text="@string/send" />
     </LinearLayout>
 </LinearLayout>
-
+</LinearLayout>
 
