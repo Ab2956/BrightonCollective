@@ -31,19 +31,11 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
-        backBtn = findViewById(R.id.backBtn);
+
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         currentUserId = auth.getCurrentUser().getUid();
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MessageActivity.this, HomePage.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         usersRecyclerView = findViewById(R.id.usersRecyclerView);
         usersRecyclerView.setLayoutManager(new LinearLayoutManager(this));

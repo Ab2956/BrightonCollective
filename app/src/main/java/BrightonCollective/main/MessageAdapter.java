@@ -20,6 +20,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         this.currentUserId = currentUserId;
     }
 
+
     @Override
     public int getItemViewType(int position) {
         return messages.get(position).getSenderId().equals(currentUserId) ? 1 : 0;

@@ -33,11 +33,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sellTitle"
+                android:text="@string/chat"
                 android:layout_weight="50"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="34sp"
+                android:textSize="24sp"
                 android:textColor="#D1D1D1">
 
 
